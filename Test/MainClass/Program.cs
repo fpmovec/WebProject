@@ -1,20 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 using System.Xml;
 using Ionic.Zip;
+using Newtonsoft.Json;
 using SharpCompress.Archives.Rar;
 
-namespace Test
+namespace Test.MainClass
 {
     public class File
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
+
+    public class TypeInfo
+    {
+        static Dictionary<string, FileTypes> _types;
+
+        public TypeInfo()
+        {
+            _types = new Dictionary<string, FileTypes>
+            {
+                {"JSON", new JSON()},
+                {"TXT", new TXT()},
+                {"XML", new XML()}
+            };
+        }
+
+        public void TypeOutput(string type)
+        {
+            _types.TryGetValue(type, out var fileTypes);
+            fileTypes?.Type();
+        }
+    }
     internal static class Program
     {
+        
         public static void Main(string[] args)
         {
             using (StreamReader input = new StreamReader("input.txt")) // TXT
@@ -25,7 +48,8 @@ namespace Test
             
             var obj = JsonConvert.DeserializeObject<File>(System.IO.File.ReadAllText("input.json")); // JSON
             Console.WriteLine(obj?.Name);
-
+            
+            
             XmlTextReader xmlRead = new XmlTextReader("input.xml"); // XML
             xmlRead.WhitespaceHandling = WhitespaceHandling.None;
             while (xmlRead.Read())
@@ -99,7 +123,12 @@ namespace Test
                     }
                 }
             }
-            
+            //System.IO.File.Decrypt("input.xml");
+            //Console.WriteLine(Path.GetExtension("input.xml"));
+            TypeInfo typeInfo = new TypeInfo();
+            typeInfo.TypeOutput("XML");
+            typeInfo.TypeOutput("JSON");
+            typeInfo.TypeOutput("TXT");
         }
     }
 }

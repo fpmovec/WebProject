@@ -78,7 +78,11 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Program.cs" />
+        <Compile Include="FileTypes\FileTypes.cs" />
+        <Compile Include="FileTypes\JSON.cs" />
+        <Compile Include="FileTypes\TXT.cs" />
+        <Compile Include="FileTypes\XML.cs" />
+        <Compile Include="MainClass\Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
