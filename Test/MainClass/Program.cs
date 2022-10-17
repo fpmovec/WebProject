@@ -24,9 +24,9 @@ namespace Test.MainClass
         {
             _types = new Dictionary<string, IFileTypes>
             {
-                {"JSON", new Json()},
-                {"TXT", new Txt()},
-                {"XML", new Xml()}
+                {".json", new Json()},
+                {".txt", new Txt()},
+                {".xml", new Xml()}
             };
         }
 
@@ -127,9 +127,9 @@ namespace Test.MainClass
             //System.IO.File.Decrypt("input.xml");
             //Console.WriteLine(Path.GetExtension("input.xml"));
             TypeInfo typeInfo = new TypeInfo();
-            typeInfo.TypeOutput("XML");
-            typeInfo.TypeOutput("JSON");
-            typeInfo.TypeOutput("TXT");
+            typeInfo.TypeOutput(Path.GetExtension("input.xml"));
+            typeInfo.TypeOutput(Path.GetExtension("input.json"));
+            typeInfo.TypeOutput(Path.GetExtension("input.txt"));
         }
     }
 }
