@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Test
+namespace Test.FileTypes
 {
-    public class JSON: FileTypes
+    public class Json: IFileTypes
     {
         public void Type()
         {

@@ -6,6 +6,7 @@ using System.Xml;
 using Ionic.Zip;
 using Newtonsoft.Json;
 using SharpCompress.Archives.Rar;
+using Test.FileTypes;
 
 namespace Test.MainClass
 {
@@ -17,15 +18,15 @@ namespace Test.MainClass
 
     public class TypeInfo
     {
-        static Dictionary<string, FileTypes> _types;
+        static Dictionary<string, IFileTypes> _types;
 
         public TypeInfo()
         {
-            _types = new Dictionary<string, FileTypes>
+            _types = new Dictionary<string, IFileTypes>
             {
-                {"JSON", new JSON()},
-                {"TXT", new TXT()},
-                {"XML", new XML()}
+                {"JSON", new Json()},
+                {"TXT", new Txt()},
+                {"XML", new Xml()}
             };
         }
 

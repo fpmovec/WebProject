@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Test
+namespace Test.FileTypes
 {
-    public class XML: FileTypes
+    public class Xml: IFileTypes
     {
         public void Type()
         {

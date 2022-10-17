@@ -1,6 +1,6 @@
-﻿namespace Test
+﻿namespace Test.FileTypes
 {
-    public interface FileTypes
+    public interface IFileTypes
     {
         void Type();
     }

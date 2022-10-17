@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Test
+namespace Test.FileTypes
 {
-    public class TXT: FileTypes
+    public class Txt: IFileTypes
     {
         public void Type()
         {
