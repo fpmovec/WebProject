@@ -13,7 +13,7 @@ namespace Test
         [JsonProperty("name")]
         public string Name { get; set; }
     }
-    internal class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {
@@ -60,7 +60,7 @@ namespace Test
                 foreach (ZipEntry item in zipFile)
                 {
                     var obj1 = JsonConvert.DeserializeObject<File>(System.IO.File.ReadAllText(item.FileName)); 
-                    Console.WriteLine(obj?.Name);
+                    Console.WriteLine(obj1?.Name);
                 }
             }
             
@@ -69,7 +69,7 @@ namespace Test
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
                 {
                     var obj1 = JsonConvert.DeserializeObject<File>(System.IO.File.ReadAllText(entry.Key)); 
-                    Console.WriteLine(obj?.Name);
+                    Console.WriteLine(obj1?.Name);
                 }
             }
             
@@ -82,7 +82,7 @@ namespace Test
                     xmlRead.WhitespaceHandling = WhitespaceHandling.None;
                     while (xmlRead.Read())
                     {
-                        if (xmlRead.NodeType == XmlNodeType.Text) Console.WriteLine(xmlRead.Value);
+                        if (xmlRead1.NodeType == XmlNodeType.Text) Console.WriteLine(xmlRead.Value);
                     }
                 }
             }
@@ -95,7 +95,7 @@ namespace Test
                     xmlRead.WhitespaceHandling = WhitespaceHandling.None;
                     while (xmlRead.Read())
                     {
-                        if (xmlRead.NodeType == XmlNodeType.Text) Console.WriteLine(xmlRead.Value);
+                        if (xmlRead1.NodeType == XmlNodeType.Text) Console.WriteLine(xmlRead.Value);
                     }
                 }
             }
