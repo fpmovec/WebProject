@@ -130,6 +130,7 @@ namespace Test.MainClass
             typeInfo.TypeOutput(Path.GetExtension("input.xml"));
             typeInfo.TypeOutput(Path.GetExtension("input.json"));
             typeInfo.TypeOutput(Path.GetExtension("input.txt"));
+            Console.ReadLine();
         }
     }
 }
