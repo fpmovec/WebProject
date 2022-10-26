@@ -1,0 +1,58 @@
+﻿<div id="body">
+    <ul id="files"></ul>
+    <form id="saveFileForm" method="post">
+        <h3>Create a new File</h3>
+        <p>
+            <label for="contactName">File path:</label>
+            <input type="text" name="InFilePath" />
+        </p>
+        <p>
+            <label for="contactA">Input archieve:</label>
+            <input type="text" name="InArchieveType" />
+        </p>
+        <p>
+            <label for="contactO">Input file type:</label>
+            <input type="text" name="InFileType" />
+        </p>
+        <p>
+            <label for="contactOu">Output file type:</label>
+            <input type="text" name="OutFileType" />
+        </p>
+        <p>
+            <label for="contactOa">Output archieve type:</label>
+            <input type="text" name="OutArchieveType" />
+        </p>
+        <input type="button" id="saveFile" value="Save" />
+    </form>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+//$(function()
+//{
+//        $.getJSON('/api/contact', function(contactsJsonPayload)
+//        {
+//            $(contactsJsonPayload).each(function(i, item)
+//            {
+//                $('#contacts').append('<li>' + '<strong>' + "Path: " + '</strong>'+ item.Path
+//                    + '</li>');
+//            });
+//        });
+//});
+        $('#saveFile').click(function () {
+            $.post("api/WebService",
+                $("#saveFileForm").serialize(),
+                function (value) {
+                    $('#files').append('<li>' + '<strong>' + "Path: " + '</strong>' + value.InFilePath
+                        + '<ul>' + "Archieve: " + value.InArchieveType + '</ul>'
+                        + '<ul>' + "Out file type: " + value.InFileType + '</ul>'
+                        + '<ul>' + "Out archieve: " + value.OutFileType + '</ul>'
+                        + '<ul>' + "Out file type: " + value.OutArchieveType + '</ul>' + '</li>');
+                },
+                "json"
+            );
+        });
+    </script>
+}
+
+
