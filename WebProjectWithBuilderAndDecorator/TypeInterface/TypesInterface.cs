@@ -21,7 +21,7 @@ namespace WebProjectWithBuilderAndDecorator.TypeInterface
     {
         public void Type(object obj)
         {
-            XmlDecorator decorator = new XmlDecorator((FileItem)obj);
+            XmlInDecorator decorator = new XmlInDecorator((FileItem)obj);
             obj = decorator.FileImprovement();
         }
     }
@@ -38,7 +38,7 @@ namespace WebProjectWithBuilderAndDecorator.TypeInterface
     {
         public void Type(object obj)
         {
-            TxtDecorator decorator = new TxtDecorator((FileItem)obj);
+            TxtInDecorator decorator = new TxtInDecorator((FileItem)obj);
             obj = decorator.FileImprovement();
         }
     }

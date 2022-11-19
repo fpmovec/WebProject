@@ -51,9 +51,9 @@ namespace WebProjectWithBuilderAndDecorator.Decorators
 
     }
 
-    class TxtDecorator : FileDecorator
+    class TxtInDecorator : FileDecorator
     {
-        public TxtDecorator(IFileImprovement file) : base(file) { }
+        public TxtInDecorator(IFileImprovement file) : base(file) { }
 
         public override object FileImprovement()
         {
@@ -79,9 +79,9 @@ namespace WebProjectWithBuilderAndDecorator.Decorators
             return improve;
         }
     }
-    class XmlDecorator : FileDecorator
+    class XmlInDecorator : FileDecorator
     {
-        public XmlDecorator(IFileImprovement file) : base(file) { }
+        public XmlInDecorator(IFileImprovement file) : base(file) { }
          public override object FileImprovement()
          {
             var improve = base.FileImprovement();
@@ -144,9 +144,9 @@ namespace WebProjectWithBuilderAndDecorator.Decorators
             return improve;
         }
     }
-    class MD5Decorator : FileDecorator
+    class MD5InDecorator : FileDecorator
     {
-        public MD5Decorator(IFileImprovement file) : base(file) { }
+        public MD5InDecorator(IFileImprovement file) : base(file) { }
         public override object FileImprovement()
         {
             object improve = base.FileImprovement();
