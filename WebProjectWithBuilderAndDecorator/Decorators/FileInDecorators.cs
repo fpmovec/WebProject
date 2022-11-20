@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using SharpCompress.Archives.Rar;
 using WebProjectWithBuilderAndDecorator.Models;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebProjectWithBuilderAndDecorator.Decorators
 {
@@ -150,8 +151,11 @@ namespace WebProjectWithBuilderAndDecorator.Decorators
         public MD5InDecorator(IFileImprovement file) : base(file) { }
         public override FileItem FileImprovement()
         {
-            object improve = base.FileImprovement();
-            improve += "\n + MD5 1!";
+            FileItem improve = base.FileImprovement();
+            string exp = improve.GetExpression();
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] checkSum = md5.ComputeHash(Encoding.UTF8.GetBytes(exp));
+            improve.EncryptedExpression = BitConverter.ToString(checkSum).Replace("-", String.Empty);
             return improve;
         }
 

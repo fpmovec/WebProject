@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AngouriMath;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,12 @@ namespace WebProjectWithBuilderAndDecorator.Models
         {
             return this;
         }
+        public double ExpressionParsing()
+        {
+            Entity expression = GetExpression();
+            return (double)expression.EvalNumerical();
+        }
+
         public void SetExpression(string exp)
         {
             Expression = exp;

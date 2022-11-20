@@ -50,23 +50,27 @@ namespace WebProjectWithBuilderAndDecorator.Models
             if (obj.InArchieveType == "zip")
             {
                 ZipInDecorator zipInDecorator = new ZipInDecorator(obj);
-                typeInfo.TypeOut(((FileItem)zipInDecorator.FileImprovement()).InFileType,
-                    (FileItem)zipInDecorator.FileImprovement());
+                typeInfo.TypeOut(zipInDecorator.FileImprovement().InFileType,
+                   zipInDecorator.FileImprovement());
               
             }
             else if (obj.InArchieveType == "rar")
             {
                 RarInDecorator rarInDecorator = new RarInDecorator(obj);
-                typeInfo.TypeOut(((FileItem)rarInDecorator.FileImprovement()).InFileType,
-                     (FileItem)rarInDecorator.FileImprovement());
+                typeInfo.TypeOut(rarInDecorator.FileImprovement().InFileType,
+                     rarInDecorator.FileImprovement());
               
             }
             else
             {
-                typeInfo.TypeOut(((FileItem)obj.FileImprovement()).InFileType,
-                     (FileItem)obj.FileImprovement());
+                typeInfo.TypeOut(obj.FileImprovement().InFileType,
+                    obj.FileImprovement());
             }
             string line = obj.GetExpression();
+            MD5InDecorator md5 = new MD5InDecorator(obj);
+            md5.FileImprovement();
+            XmlOutDecorator xml = new XmlOutDecorator(md5);
+            xml.FileImprovement();
         }
     }
     public class TypeInfo
