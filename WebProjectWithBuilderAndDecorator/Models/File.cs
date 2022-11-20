@@ -10,7 +10,7 @@ namespace WebProjectWithBuilderAndDecorator.Models
 {
     public interface IFileImprovement
     {
-       object FileImprovement(); 
+       FileItem FileImprovement(); 
     }
     public class FileItem : IFileImprovement
     {
@@ -19,20 +19,21 @@ namespace WebProjectWithBuilderAndDecorator.Models
         public string InFileType { get; set; }
         public string OutFileType { get; set; }
         public string OutArchieveType { get; set; }
-        private string _expression { get; set; }
+        public string EncryptedExpression { get; set; }
+        private string Expression { get; set; }
 
         public Stream archiveStream;
-        public object FileImprovement()
+        public FileItem FileImprovement()
         {
             return this;
         }
         public void SetExpression(string exp)
         {
-            _expression = exp;
+            Expression = exp;
         }
         public string GetExpression()
         {
-            return _expression;
+            return Expression;
         }
         public override string ToString() =>
          new StringBuilder()
@@ -53,7 +54,7 @@ namespace WebProjectWithBuilderAndDecorator.Models
             _file = file;
         }
 
-        public virtual object FileImprovement()
+        public virtual FileItem FileImprovement()
         {
             return _file.FileImprovement();
         }
