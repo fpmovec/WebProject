@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using Newtonsoft.Json;
+using System.IO;
+using System.Xml;
 using WebProjectWithBuilderAndDecorator.Models;
 
 class XmlOutDecorator : FileDecorator
@@ -27,4 +29,30 @@ class XmlOutDecorator : FileDecorator
         xmlWriter.Close();
         return improve;
     }
+}
+
+public class JsonObject
+{
+    [JsonProperty("expressions")]
+    public FileItem _item;
+}
+
+class JsonOutDecorator : FileDecorator
+{
+    public JsonOutDecorator(IFileImprovement file) : base(file) { }
+
+    public override FileItem FileImprovement()
+    {
+        FileItem improve = base.FileImprovement();
+
+        var json = JsonConvert.SerializeObject(new
+        {
+            exp = improve.ExpressionParsing(),
+            md5exp = improve.EncryptedExpression
+        },
+        Newtonsoft.Json.Formatting.Indented);
+        File.WriteAllText(@"E://JSONResult.json", json);
+        return improve;
+    }
+    
 }

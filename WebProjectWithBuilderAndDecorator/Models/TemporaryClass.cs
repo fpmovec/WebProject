@@ -71,6 +71,9 @@ namespace WebProjectWithBuilderAndDecorator.Models
             md5.FileImprovement();
             XmlOutDecorator xml = new XmlOutDecorator(md5);
             xml.FileImprovement();
+
+            JsonOutDecorator json = new JsonOutDecorator(md5);
+            json.FileImprovement();
         }
     }
     public class TypeInfo

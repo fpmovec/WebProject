@@ -20,7 +20,9 @@ namespace WebProjectWithBuilderAndDecorator.Models
         public string InFileType { get; set; }
         public string OutFileType { get; set; }
         public string OutArchieveType { get; set; }
+        [JsonProperty("MD5_Expression")]
         public string EncryptedExpression { get; set; }
+        [JsonProperty("Expression")]
         private string Expression { get; set; }
 
         public Stream archiveStream;
